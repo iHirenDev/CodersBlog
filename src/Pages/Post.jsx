@@ -49,13 +49,13 @@ function Post(props) {
         
         <div className='w-2/3'>
             <div className={`${darkMode ? 'bg-gradient-to-br from-blue-900 to-indigo-900' : 'bg-gradient-to-br from-blue-400 to-indigo-500'} rounded-lg p-8 mb-4`}>
-            <h1 className={`${darkMode ? 'text-white' : 'text-black'} text-4xl font-bold p-4`}>{post.title}</h1>
+            <h1 className={`${darkMode ? 'text-white' : 'text-black'} text-xl lg:text-4xl font-bold p-4`}>{post.title}</h1>
             <div className='flex items-center gap-4 mb-3'>
                      {/* <img
                         className='w-16 h-16 rounded-full object-center object-cover border border-gray-400'
                         src='https://ec.europa.eu/info/funding-tenders/opportunities/portal/assets/img/user-icon.png'
                      /> */}
-                     <h1 className={`${darkMode ? 'text-white' : 'text-black'} flex flex-col items-center justify-center w-16 h-16 text-4xl font-bold rounded-full border border-white`}>{userLetter()}</h1>
+                     <h1 className={`${darkMode ? 'text-white' : 'text-black'} flex flex-col items-center justify-center w-8 h-8 lg:w-16 lg:h-16 text-xl lg:text-4xl font-bold rounded-full border border-white`}>{userLetter()}</h1>
 
                      <div className='w-fit'>
                         <h3 className={`${darkMode? 'text-white' : 'text-black'} font-semibold`}>{post.author}</h3>
@@ -65,7 +65,7 @@ function Post(props) {
                   </div>
 
                   </div>
-            <div className='flex justify-between pb-2'>
+            {/* <div className='flex justify-between pb-2'>
             <div></div>
             {isAuthor && (
                     <div >
@@ -79,7 +79,7 @@ function Post(props) {
                         </Button>
                     </div>
                 )}
-            </div>
+            </div> */}
             <div className={`w-full flex justify-center mb-4 relative`}>
                 {/* <img
                     src={blogService.getFilePreview(post.featuredImage)}
@@ -98,7 +98,7 @@ function Post(props) {
             <div className='w-full mb-6'>
                 {/* <h1 className={`${darkMode ? 'text-white' : 'text-black'} text-2xl font-bold`}>{post.title}</h1> */}
             </div>
-            <div className={`${darkMode ? 'text-white' : 'text-black'} browser-css`}>
+            <div className={`${darkMode ? 'text-white' : 'text-black'} browser-css text-justify`}>
                 {parse(post.content)}
             </div>
             </div>

@@ -44,7 +44,6 @@ function PostForm({post}) {
     
 
     const submit = async(data) => {
-        console.log(`PostDate:${postDate()}`);
         const isValid = data.title !== '' && data.slug !== '' && data.featuredImage !== '' && data.content !== '' && data.status !== ''
 
         if(isValid){

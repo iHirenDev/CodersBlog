@@ -8,9 +8,7 @@ function Login(props) {
     document.title= props.title
 },[])
   return (
-    <div className={`${darkMode ? 'bg-dark' : 'bg-light'} py-8`}>
-      <LoginComponent/>
-    </div>
+    <div className={`${darkMode ? 'bg-dark' : 'bg-light'} py-10`}><LoginComponent/></div>
   )
 }
 
