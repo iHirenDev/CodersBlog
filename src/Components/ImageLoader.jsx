@@ -8,7 +8,7 @@ function ImageLoader({
     }) {
 
   const [imageLoaded, setImageLoaded] = useState(false)
-
+      console.log(`Image URL:${src}`);
   // useEffect(() => {
   //   const t = setTimeout(() => {
   //     setImageLoaded(true)
@@ -29,19 +29,19 @@ function ImageLoader({
   }
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`relative w-full overflow-hidden ${className}`}>
 
       {!imageLoaded
        && (
         <img
-          className={`object-cover w-full ${className}`}
+          className={`absolute inset-0 object-cover w-full h-full`}
           src={logo}
           alt='placeholder'
         />
         //<MyContentLoader/>
       )}
       <img
-        className={`object-cover w-full ${className}`}
+        className={`absolute inset-0 object-cover w-full h-full`}
         src={src}
         alt={alt}
         onLoad={handleImageLoad}

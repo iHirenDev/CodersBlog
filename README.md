@@ -7,6 +7,7 @@ A sample react app with blogging functionality featuring user authentication and
 - [Installation](#installation)
 - [Appwrite Configuration](#appwrite-configuration)
 - [Dependencies](#dependencies)
+- [Features](#features)
 
 ## Installation
 1. **Clone the repository:**
@@ -58,3 +59,11 @@ A sample react app with blogging functionality featuring user authentication and
 | [Tiny MCE](https://www.tiny.cloud/) | TinyMCE is the most advanced WYSIWYG HTML editor designed to simplify website content creation.|
 | [Framer Motion](https://www.framer.com/motion/) | A production-ready motion library for React.|
 
+**For a complete list, see package.json.**
+
+## Features
+- User registration and authentication
+- Create, edit, and delete blog posts
+- Theming using redux store
+- Mobile device friendly responsive UI
+- Rich Text Editor using Tiny MCE for user friendly content creation
