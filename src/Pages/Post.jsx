@@ -49,8 +49,8 @@ function Post(props) {
         
         <div className='w-2/3'>
             <div className={`${darkMode ? 'bg-gradient-to-br from-blue-900 to-indigo-900' : 'bg-gradient-to-br from-blue-400 to-indigo-500'} rounded-lg p-8 mb-4`}>
-            <h1 className={`${darkMode ? 'text-white' : 'text-black'} text-xl lg:text-4xl font-bold p-4`}>{post.title}</h1>
-            <div className='flex items-center gap-4 mb-3'>
+            <h1 className={`${darkMode ? 'text-white' : 'text-black'} text-xl lg:text-4xl font-bold p-2`}>{post.title}</h1>
+            <div className='flex items-center gap-4 mb-3 mt-3'>
                      {/* <img
                         className='w-16 h-16 rounded-full object-center object-cover border border-gray-400'
                         src='https://ec.europa.eu/info/funding-tenders/opportunities/portal/assets/img/user-icon.png'
@@ -90,7 +90,7 @@ function Post(props) {
                 <ImageLoader
                     src={blogService.getFilePreview(post.featuredImage)}
                     alt={post.title}
-                    className='lg:h-[400px]'
+                    className='h-[200px] lg:h-[400px]'
                 />
                 
             </div>
