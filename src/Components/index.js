@@ -14,6 +14,7 @@ import PostForm from "./PostForm";
 import AuthLayout from './AuthLayout'
 import ImageLoader from "./ImageLoader";
 import ThemeToggler from "./Theme/ThemeToggler";
+import MyContentLoader from "./MyContentLoader";
 
 export {Header, 
         Footer,
@@ -30,5 +31,6 @@ export {Header,
         AuthLayout,
         SignUp,
         ImageLoader,
-        ThemeToggler
+        ThemeToggler,
+        MyContentLoader
         }

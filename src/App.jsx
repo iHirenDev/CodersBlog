@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import authService from './appWrite/authService'
 import {login, logout} from './features/authSlice'
 import {Outlet} from 'react-router-dom'
-import { Header, Footer } from './Components'
+import { Header, Footer, MyContentLoader } from './Components'
 
 function App() {
   const [loading,setLoading] = useState(true)
@@ -33,7 +33,18 @@ function App() {
     </main>
     <Footer/>
     </div>
-  ) : null
+  ) : (
+    <div className='flex flex-col items-center pt-16'>
+      <MyContentLoader/>
+      <div className='p-4'></div>
+      <MyContentLoader/>
+      <div className='p-4'></div>
+      <MyContentLoader/>
+      <div className='p-4'></div>
+      <MyContentLoader/>
+    </div>
+  )
+  
 }
 
 export default App

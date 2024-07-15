@@ -4,10 +4,35 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .svgLoader {
+        animation: spin 0.5s linear infinite;
+        margin: auto;
+      }
+      .divLoader {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
     <title>Coders Blog</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="divLoader">
+        <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
+          <path fill="lightblue"
+            d="PATH FOR THE LOADER ICON"
+          />
+        </svg>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
