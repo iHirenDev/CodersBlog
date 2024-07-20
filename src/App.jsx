@@ -35,13 +35,13 @@ function App() {
     </div>
   ) : (
     <div className='flex flex-col items-center pt-16'>
-      <MyContentLoader/>
+      <MyContentLoader className='w-10/12'/>
       <div className='p-4'></div>
-      <MyContentLoader/>
+      <MyContentLoader className='w-10/12'/>
       <div className='p-4'></div>
-      <MyContentLoader/>
+      <MyContentLoader className='w-10/12'/>
       <div className='p-4'></div>
-      <MyContentLoader/>
+      <MyContentLoader className='w-10/12'/>
     </div>
   )
   

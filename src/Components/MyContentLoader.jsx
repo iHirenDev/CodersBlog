@@ -1,33 +1,7 @@
-// import React, { useState, useEffect, useRef } from 'react';
-// import ContentLoader from 'react-content-loader'
-
-// const MyContentLoader = ({className=''}) => (
-
-//   <div className={`${className}`}>
-//     <ContentLoader 
-//       speed={2}
-//       width={className}
-//       height={350}
-//       viewBox={`0 0 ${className} 400`}
-//       backgroundColor="#ddd5d5"
-//       foregroundColor="#ecebeb"   
-//     >
-//       <circle cx="31" cy="31" r="20" /> 
-//       {/* <rect x="58" y="20" rx="2" ry="4" width="300" height="10" />  */}
-//       <rect x="55" y="25" rx="5" ry="5" width="100" height="10" />
-//       <rect x="300" y="25" rx="5" ry="5" width="100" height="10" />
-//       <rect x="0" y="60" rx="2" ry="2" width={className} height="350" />
-//     </ContentLoader>
-//     </div>
-//   )
-
-// export default MyContentLoader
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import ContentLoader from 'react-content-loader';
 
-const MyContentLoader = () => {
+const MyContentLoader = ({className=''}) => {
   const [width, setWidth] = useState(400); // Initial width
   const containerRef = useRef(null);
 
@@ -53,7 +27,7 @@ const MyContentLoader = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="my-loader-container" style={{ width: '80%' }}>
+    <div ref={containerRef} className={`${className}`}>
       <ContentLoader
         speed={2}
         width={width}

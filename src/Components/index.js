@@ -15,6 +15,7 @@ import AuthLayout from './AuthLayout'
 import ImageLoader from "./ImageLoader";
 import ThemeToggler from "./Theme/ThemeToggler";
 import MyContentLoader from "./MyContentLoader";
+import MyCustomModal from "./MyCustomModal";
 
 export {Header, 
         Footer,
@@ -32,5 +33,6 @@ export {Header,
         SignUp,
         ImageLoader,
         ThemeToggler,
-        MyContentLoader
+        MyContentLoader,
+        MyCustomModal
         }

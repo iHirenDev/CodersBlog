@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import blogService from '../appWrite/blogService'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Button, ImageLoader } from '../Components'
+import { Button, ImageLoader, MyCustomModal } from '../Components'
 import parse from 'html-react-parser'
 import { useSelector } from 'react-redux'
 
@@ -15,12 +15,9 @@ function Post(props) {
 
     const darkMode = useSelector((state) => state.themeMode.darkMode)
 
-    
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
-    
-        
-    
         blogService.getBlogPost(slug).then((post) => {
             if(post){
                 setPost(post)
@@ -35,7 +32,27 @@ function Post(props) {
     const userLetter = () => {
         return post.author.charAt(0)
      }
-    const deletPost = () => {
+
+    const handleOpen = () => {
+        setOpen(true)        
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+    }
+
+    const handleConfirm = () => {
+        deletePost()
+        handleClose()
+    }
+
+    // const handleDelete = () => {
+    //     if(window.confirm(`Are you sure want to delete this post?`)){
+    //         deletePost()
+    //     }
+    // }
+
+    const deletePost = () => {
         blogService.deleteBlogPost(post.$id).then((status) => {
             if(status){
                 blogService.deleteFile(post.featuredImage)
@@ -65,21 +82,19 @@ function Post(props) {
                   </div>
 
                   </div>
-            {/* <div className='flex justify-between pb-2'>
-            <div></div>
+            
             {isAuthor && (
-                    <div >
+                <div className='pb-2'>
                         <Link to={`/edit-post/${post.$id}`}>
-                            <Button bgColor='bg-green-500' className='mr-3 font-semibold'>
+                            <Button isEditPost={true} bgColor='bg-green-500' className='mr-3 font-semibold'>
                                 Edit Post
                             </Button>
                         </Link>
-                        <Button bgColor='bg-red-500' className='font-semibold' onClick={deletPost}>
-                                Delete Post
-                        </Button>
-                    </div>
+                        <button className='bg-red-600 px-4 rounded-lg py-2 font-semibold text-white float-end' onClick={handleOpen}>Delete Post</button>
+                        <MyCustomModal open={open} handleClose={handleClose} handleConfirm={handleConfirm}/>
+                        </div>  
                 )}
-            </div> */}
+            
             <div className={`w-full flex justify-center mb-4 relative`}>
                 {/* <img
                     src={blogService.getFilePreview(post.featuredImage)}
