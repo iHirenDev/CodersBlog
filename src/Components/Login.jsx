@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {login as authLogin} from '../features/authSlice'
-import {Button, Input, Logo} from './index'
+import {Button, Input, Logo, MyCustomSpinner} from './index'
 import authService from '../appWrite/authService'
 import {useForm} from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,11 +12,13 @@ function Login() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const darkMode = useSelector((state) => state.themeMode.darkMode)
 
 
     const login = async(data) => {
+        setLoading(true)
         setError('')
 
         try {
@@ -25,6 +27,7 @@ function Login() {
                 const userData = await authService.getCurrentUser()
                 if(userData){
                     dispatch(authLogin(userData))
+                    //setLoading(false)
                 }
                 navigate('/')
             }
@@ -34,7 +37,7 @@ function Login() {
         }
     }
 
-  return (
+  return !loading ? (
     <div className={`${darkMode ? 'bg-dark' : 'bg-light'} flex items-center justify-center w-full`}>
         <div className={`${darkMode ? 'bg-gray-600' : 'bg-gray-200'} mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
             <div className='mb-2 flex justify-center'>
@@ -84,7 +87,7 @@ function Login() {
             </form>
         </div>
     </div>
-  )
+  ) : <MyCustomSpinner message='Signing you in...'/>
 }
 
 export default Login

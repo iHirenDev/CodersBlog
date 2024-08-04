@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Input, Logo, Button} from './index'
+import {Input, Logo, Button, MyCustomSpinner} from './index'
 import authService from '../appWrite/authService'
 import { login as authLogin } from '../features/authSlice'
 import { Link,useNavigate } from 'react-router-dom'
@@ -11,11 +11,12 @@ function SignUp() {
   const dispatch = useDispatch()
   const [error, setError] = useState('')
   const {register, handleSubmit} = useForm()
-
+  const [loading,setLoading] = useState(false)
   const darkMode = useSelector((state) => state.themeMode.darkMode)
 
   const signUp = async(data) => {
     setError('')
+    setLoading(true)
 
     try {
       const userData = await authService.createAccount(data)
@@ -30,7 +31,7 @@ function SignUp() {
     }
   }
 
-  return (
+  return !loading ? (
     <div className={`${darkMode ? 'bg-dark' : 'bg-light'} flex items-center justify-center w-full`}>
       <div className={`${darkMode ? 'bg-gray-600' : 'bg-gray-200'} mx-auto w-full max-w-lg  rounded-xl p-10 border border-black/10`}>
           <div className='mb-2 flex justify-center'>
@@ -83,6 +84,8 @@ function SignUp() {
             </form>
       </div>
     </div>
+  ) : (
+    <MyCustomSpinner message='Signing Up...'/>
   )
 }
 

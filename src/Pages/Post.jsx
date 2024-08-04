@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import blogService from '../appWrite/blogService'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Button, ImageLoader, MyCustomModal } from '../Components'
+import { Button, ImageLoader, MyCustomModal, MyCustomSpinner } from '../Components'
 import parse from 'html-react-parser'
 import { useSelector } from 'react-redux'
 
@@ -16,13 +16,14 @@ function Post(props) {
     const darkMode = useSelector((state) => state.themeMode.darkMode)
 
     const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         blogService.getBlogPost(slug).then((post) => {
             if(post){
                 setPost(post)
                 document.title= `${slug}`
-                console.log(`Post Id: ${post.$id}`);
+                setLoading(false)
             } else {
                 navigate('/')
             }
@@ -61,7 +62,8 @@ function Post(props) {
         })
     }
 
-  return post ? (
+  return !loading ? 
+            post ? (
     <div className={`${darkMode ? 'bg-dark2' : 'bg-light'} flex flex-col items-center py-8`}>
         
         <div className='w-2/3'>
@@ -84,7 +86,7 @@ function Post(props) {
                   </div>
             
             {isAuthor && (
-                <div className='pb-2'>
+                <div className='pb-8'>
                         <Link to={`/edit-post/${post.$id}`}>
                             <Button isEditPost={true} bgColor='bg-green-500' className='mr-3 font-semibold'>
                                 Edit Post
@@ -119,7 +121,8 @@ function Post(props) {
             </div>
         </div>
     </div>
-  ) : null
+            ) : <div><h1>Error loading post.</h1></div> 
+            : <MyCustomSpinner message='Loading post...'/>
 }
 
 export default Post

@@ -16,6 +16,7 @@ import ImageLoader from "./ImageLoader";
 import ThemeToggler from "./Theme/ThemeToggler";
 import MyContentLoader from "./MyContentLoader";
 import MyCustomModal from "./MyCustomModal";
+import MyCustomSpinner from "./MyCustomSpinner";
 
 export {Header, 
         Footer,
@@ -34,5 +35,6 @@ export {Header,
         ImageLoader,
         ThemeToggler,
         MyContentLoader,
-        MyCustomModal
+        MyCustomModal,
+        MyCustomSpinner
         }

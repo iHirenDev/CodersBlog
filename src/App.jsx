@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import authService from './appWrite/authService'
 import {login, logout} from './features/authSlice'
 import {Outlet} from 'react-router-dom'
-import { Header, Footer, MyContentLoader } from './Components'
+import { Header, Footer, MyContentLoader, MyCustomSpinner } from './Components'
 
 function App() {
   const [loading,setLoading] = useState(true)
@@ -34,15 +34,16 @@ function App() {
     <Footer/>
     </div>
   ) : (
-    <div className='flex flex-col items-center pt-16'>
-      <MyContentLoader className='w-10/12'/>
-      <div className='p-4'></div>
-      <MyContentLoader className='w-10/12'/>
-      <div className='p-4'></div>
-      <MyContentLoader className='w-10/12'/>
-      <div className='p-4'></div>
-      <MyContentLoader className='w-10/12'/>
-    </div>
+    // <div className='flex flex-col items-center pt-16'>
+    //   <MyContentLoader className='w-10/12'/>
+    //   <div className='p-4'></div>
+    //   <MyContentLoader className='w-10/12'/>
+    //   <div className='p-4'></div>
+    //   <MyContentLoader className='w-10/12'/>
+    //   <div className='p-4'></div>
+    //   <MyContentLoader className='w-10/12'/>
+    // </div>
+    <MyCustomSpinner message='Fetching posts...'/>
   )
   
 }

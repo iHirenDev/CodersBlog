@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
-import {Button, Input, RTE, Select} from './index'
+import {Button, Input, MyCustomSpinner, RTE, Select} from './index'
 import blogService from '../appWrite/blogService'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -13,7 +13,7 @@ function PostForm({post}) {
     const {slug} = useParams()
     const userData = useSelector((state) => state.auth.userData)
     const darkMode = useSelector((state) => state.themeMode.darkMode)
-    
+    const [showSpinner,setShowSpinner] = useState(false)
    
 
     const {register, handleSubmit, watch, setValue, control, getValues, reset} = useForm({
@@ -41,13 +41,14 @@ function PostForm({post}) {
         return formattedDate
     }
 
-    
+  
 
     const submit = async(data) => {
         const isValid = data.title !== '' && data.slug !== '' && data.featuredImage !== '' && data.content !== '' && data.status !== ''
 
         if(isValid){
             setErrorMessage('')
+            setShowSpinner(true)
             if(post){
                 const file = data.image[0] ? await blogService.uploadFile(data.image[0]) : null
                 if(file){
@@ -136,7 +137,7 @@ function PostForm({post}) {
     }, [watch, slugTransform, setValue, slug, post])
     
 
-  return (
+  return !showSpinner ? (
     <form onSubmit={handleSubmit(submit)} className='flex flex-col lg:flex-row flex-wrap'>
         <div className='lg:w-2/3 px-2'>
             <Input
@@ -191,6 +192,8 @@ function PostForm({post}) {
         </div>
 
     </form>
+  ) : (
+    <MyCustomSpinner/>
   )
 }
 

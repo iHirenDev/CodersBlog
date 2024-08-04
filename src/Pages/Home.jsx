@@ -6,9 +6,6 @@ import { useSelector } from 'react-redux'
 import { useLoaderData, Link } from 'react-router-dom'
 
 function Home(props) {
-
-    
-
     const posts = useLoaderData()
     //const [posts, setPosts] = useState([])
     const userData = useSelector((state) => state.auth.userData)
