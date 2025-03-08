@@ -122,7 +122,7 @@ function Post(props) {
         </div>
     </div>
             ) : <div><h1>Error loading post.</h1></div> 
-            : <MyCustomSpinner message='Loading post...'/>
+            : <div></div>
 }
 
 export default Post

@@ -34,16 +34,16 @@ function App() {
     <Footer/>
     </div>
   ) : (
-    // <div className='flex flex-col items-center pt-16'>
-    //   <MyContentLoader className='w-10/12'/>
-    //   <div className='p-4'></div>
-    //   <MyContentLoader className='w-10/12'/>
-    //   <div className='p-4'></div>
-    //   <MyContentLoader className='w-10/12'/>
-    //   <div className='p-4'></div>
-    //   <MyContentLoader className='w-10/12'/>
-    // </div>
-    <MyCustomSpinner message='Fetching posts...'/>
+    <div className='flex flex-col items-center pt-16'>
+      <MyContentLoader className='w-10/12'/>
+      <div className='p-4'></div>
+      <MyContentLoader className='w-10/12'/>
+      <div className='p-4'></div>
+      <MyContentLoader className='w-10/12'/>
+      <div className='p-4'></div>
+      <MyContentLoader className='w-10/12'/>
+    </div>
+    // <MyCustomSpinner message='Fetching posts...'/>
   )
   
 }
